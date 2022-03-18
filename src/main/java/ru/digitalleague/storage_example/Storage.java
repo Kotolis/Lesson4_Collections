@@ -9,7 +9,7 @@ import java.util.Map;
 public class Storage {
     private static final int STORAGE_SIZE = 3;
     private static final int ONE_ITEM_AMOUNT = 10;
-    private static final Map<String, Integer> storage = new HashMap<>();
+    public static final Map<String, Integer> storage = new HashMap<>();
     private static int freePlaces;
 
     /**
