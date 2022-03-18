@@ -1,23 +1,15 @@
 package ru.digitalleague;
 
-import org.junit.After;
+
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import ru.digitalleague.storage_example.Storage;
 
-import static org.junit.Assert.assertFalse;
 
-public class AddObject {
-    @Before
-    public void setUp(){
-        Storage.addObject("phone", 2);
-        Storage.addObject("laptop", 6);
-    }
-    @After
-    public void setUp2(){
-        Storage.storage.clear();
-    }
+
+public class AddObjectTest extends Annotations {
+
+
     @Test
     public void isInStockTest_posTest() {
         Storage.addObject("headphones", 5);
@@ -37,12 +29,6 @@ public class AddObject {
         Assert.assertEquals(8, Storage.getProductAmount("headphones"));
     }
 
-    @Test
-    public void addNewObject_negTest() {
-        Storage.addObject("headphones", 8);
-        Assert.assertTrue(Storage.isInStock("headphones"));
-        Assert.assertEquals(9, Storage.getProductAmount("headphones"));
-    }
 
     @Test
     public void addWithNegativeAmountTest() {
@@ -63,12 +49,6 @@ public class AddObject {
         Assert.assertEquals(10, Storage.getProductAmount("headphones"));
     }
 
-    @Test
-    public void addMaxAmount_negTest() {
-        Storage.addObject("headphones", 7);
-        Storage.addObject("headphones", 5);
-        Assert.assertEquals(7, Storage.getProductAmount("headphones"));
-    }
 
     @Test
     public void addNull_negTest() {
@@ -77,7 +57,7 @@ public class AddObject {
     }
 
     @Test
-    public void addWithMaxSizeTest() {
+    public void addWithMaxSize_negTest() {
         Storage.addObject("headphones", 7);
         Storage.addObject("tablet", 8);
         Assert.assertFalse(Storage.isInStock("tablet"));
